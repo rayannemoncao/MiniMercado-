@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>Mercado Primavera</title>
+</head>
+<body>
+    <header id="cabecalho">
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Mercado Primavera</a>
+            <button id="botao" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" href="index.html">Início</a></li>
+                <li class="nav-item"><a class="nav-link" href="entrar.html">Entrar</a></li>
+                <li class="nav-item"><a class="nav-link" href="perfil.html">Minha Conta</a></li>
+                <li class="nav-item"><a class="nav-link" href="carrinho.html">Carrinho</a></li>
+                <li class="nav-item"><a class="nav-link" href="avaliacao.html">Avaliação</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="bem-vindo">
+                <h2>Bem-vindo ao Mercado Primavera! </h2>
+                <p>Qualidade, economia e variedade para o seu dia a dia!</p>
+                <div id="cep">
+                  <label for="cep">Para ver a disponibilidade na sua área informe seu CEP:</label>
+                  <input type="text" id="cep" name="cep" maxlength="9" placeholder="Ex: 12345-678">
+                </div><br>
+            </div>
+            <!-- Carrossel de imagens -->
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="imagens/Banner Mercado Shops.jpg" width="100%" alt="Banner do Mercado Primavera com as frases: 'Sua compra é nosso compromisso! Aqui você encontra tudo o que precisa, com a qualidade que você merece!'. Informa que a loja faz entregas."></div>
+                    <div class="swiper-slide"><img src="imagens/Seleção De Ofertas Supermercado Banner Amarelo Azul Verde.jpg" width="100%" alt="Banner destacando seleção de ofertas com a frase: 'Aqui tem ainda mais economia que ninguém supera. Compre agora!'"></div>
+                    <div class="swiper-slide"><img src="imagens/Banner Mês do Consumidor - E-commerce.jpg" width="100%" alt="Banner anunciando oferta especial do Mês do Consumidor com entrega grátis de 14 a 20 de março."></div>
+                    <div class="swiper-slide"><img src="imagens/Banner entrega.png" width="100%" height="400px" alt="Banner informando que o delivery está ativo na loja com a frase: 'Pediu, chegou! Você pede, a gente entrega'."></div>
+
+                </div>
+                <!-- Botões de navegação -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <!-- Paginação -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+        <section id="produtos">
+          <section id="produtos" class="container py-5">
+            <div class="row">
+                <h2 class="mb-4">Hortifruti</h2>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="imagens/batata-monalisa-aprox.webp" class="card-img-top" alt="Batatas Monalisa frescas">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Batata Monalisa</h5>
+                            <p class="card-text">Aprox. 600g 2 a 4 unidades</p>
+                            <p class="fw-bold">R$ 2,63 <span class="text-muted">(R$ 9,49/kg)</span></p>
+                            <a href="#" class="btn btn-primary mt-auto">Adicionar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="imagens/tomate-italiano.jpeg" class="card-img-top" alt="Tomates Italianos frescos">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Tomate Italiano</h5>
+                            <p class="card-text">Aprox. 500g 3 a 5 unidades</p>
+                            <p class="fw-bold">R$ 6,99 <span class="text-muted">(R$ 13,99/kg)</span></p>
+                            <a href="#" class="btn btn-primary mt-auto">Adicionar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="imagens/cenoura.jpeg" class="card-img-top" alt="Cenouras frescas">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Cenoura</h5>
+                            <p class="card-text">Aprox. 500g 2 a 3 unidades</p>
+                            <p class="fw-bold">R$ 3,95 <span class="text-muted">(R$ 7,89/kg)</span></p>
+                            <a href="#" class="btn btn-primary mt-auto">Adicionar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="row mt-5">
+                <h2 class="mb-4">Mercearia</h2>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="imagens/arroz.jpeg" class="card-img-top" alt="Pacote de Arroz branco Camil de 2kg">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Arroz Branco Camil</h5>
+                            <p class="card-text">Tipo 2kg</p>
+                            <p class="fw-bold">R$ 16,99</p>
+                            <a href="#" class="btn btn-primary mt-auto">Adicionar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="imagens/feijao.jpeg" class="card-img-top" alt="Pacote de Feijão Carioca Kicaldo de 1k">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Feijão Carioca Kicaldo</h5>
+                            <p class="card-text">Tipo 1 1kg</p>
+                            <p class="fw-bold">R$ 5,89</p>
+                            <a href="#" class="btn btn-primary mt-auto">Adicionar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="imagens/café.jpeg" class="card-img-top" alt="Pacote de Café em pó 3 Corações - Tradicional de 500g">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Café em Pó 3 Corações</h5>
+                            <p class="card-text">Tradicional 500g</p>
+                            <p class="fw-bold">R$ 26,99</p>
+                            <a href="#" class="btn btn-primary mt-auto">Adicionar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="row mt-5">
+                <div id="title"><h2 class="mb-4">Higiene e Perfumaria</h2></div>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="imagens/papel-higienico.jpeg" class="card-img-top" alt="Pacote de Papel Higiênico Personal - 30metros com 16 rolos">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Papel Higiênico Personal</h5>
+                            <p class="card-text">30 metros Leve 16 Pague 15</p>
+                            <p class="fw-bold">R$ 23,59</p>
+                            <a href="#" class="btn btn-primary mt-auto">Adicionar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="imagens/colgate.jpeg" class="card-img-top" alt="Unidade de Creme Dental Colgate - tripla ação de 180g">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Creme Dental Colgate</h5>
+                            <p class="card-text">Tripla Ação 180g</p>
+                            <p class="fw-bold">R$ 8,49</p>
+                            <a href="#" class="btn btn-primary mt-auto">Adicionar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="imagens/sabonete.jpeg" class="card-img-top" alt="Unidade de Sabonete em barra Lux - Botanicals Rosas Francesas de 85g">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Sabonete em Barra Lux</h5>
+                            <p class="card-text">Botanicals Rosas Francesas 85g</p>
+                            <p class="fw-bold">R$ 2,29</p>
+                            <a href="#" class="btn btn-primary mt-auto">Adicionar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicos">
+            <h2>Serviços Oferecidos</h2>
+            <div class="card">
+                <h4>Retirada no Local</h4>
+                <p>Compre online e retire seu pedido diretamente no Mercado Primavera, sem filas e sem espera!</p>
+                <p><strong>Taxa:</strong> Grátis <strong>   Horário:</strong> De segunda a domingo, das 08h30 às 20h</p>
+            </div>
+            <div class="card">
+                <h4>Entrega em Domicílio</h4>
+                <p>Receba seus produtos no conforto da sua casa com nosso serviço de entrega rápida e segura.</p>
+                <p><strong>Taxa:</strong> R$ 25,00 (Pedidos acima de R$ 100,00 têm frete grátis!)</p>
+            </div>
+        </section>
+    </main>
+
+    <footer id="rodape" >
+        <section class="footer-container">
+            <div class="footer-section">
+                <h3>Atendimento</h3>
+                <p>Central de Atendimento</p>
+                <h4>Contatos:</h4>
+                <p>(99) 9999-9999</p>
+                <p>mercadoprimavera@email.com</p>
+                <h4>Horário de atendimento:</h4>
+                <p>De segunda a domingo, das 08h às 21h</p>
+            </div>
+            <div class="footer-section">
+                <h4>Formas de Pagamento</h4>
+                <img src="imagens/pagamento.png" alt="Formas de pagamento aceitas: bandeiras de cartão de crédito Visa, Mastercard, Elo, American Express, Hipercard, Diners Club e opção de pagamento via Pix.">
+            </div>
+        </section>
+        <div>
+            <p>&copy; 2025 Mercado Primavera - Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    </main>
+    <!-- acessibilidade -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+        function mudarSlide(direcao, id) {
+          let carrossel = document.querySelector(`#${id} .carousel-inner`);
+          let itens = carrossel.querySelectorAll(".carousel-item");
+          let indexAtual = Array.from(itens).findIndex(item => item.classList.contains("active"));
+          itens[indexAtual].classList.remove("active");
+          let novoIndex = (indexAtual + direcao + itens.length) % itens.length;
+          itens[novoIndex].classList.add("active");
+}
+document.querySelectorAll('.btn.btn-primary').forEach(button => {
+    button.addEventListener('click', function() {
+        const produto = {
+            nome: this.closest('.card').querySelector('.card-title').innerText,
+            preco: this.closest('.card').querySelector('.fw-bold').innerText,
+            quantidade: 1 // A quantidade começa com 1, você pode ajustar conforme necessário
+        };
+
+        let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+        // Verifica se o produto já existe no carrinho
+        const produtoExistente = carrinho.find(item => item.nome === produto.nome);
+        if (produtoExistente) {
+            produtoExistente.quantidade += 1; // Se já existir, incrementa a quantidade
+        } else {
+            carrinho.push(produto); // Caso contrário, adiciona o novo produto
+        }
+
+        localStorage.setItem('carrinho', JSON.stringify(carrinho));
+
+        // Para um feedback imediato ao usuário (exibir uma mensagem ou atualizar o carrinho visualmente)
+        alert(`${produto.nome} foi adicionado ao carrinho.`);
+    });
+});
+// Obtendo os elementos necessários
+const campoBusca = document.getElementById('buscarProduto');
+const todosProdutos = document.querySelectorAll('.card'); // Seleciona todos os produtos na página
+
+// Função para filtrar os produtos
+function buscarProdutos() {
+    const termoBusca = campoBusca.value.toLowerCase(); // Obtém o valor do campo de busca
+    
+    todosProdutos.forEach(produto => {
+        const nomeProduto = produto.querySelector('.card-title').innerText.toLowerCase(); // Obtém o nome do produto
+        if (nomeProduto.includes(termoBusca)) {
+            produto.style.display = ''; // Exibe o produto se corresponder ao termo de busca
+        } else {
+            produto.style.display = 'none'; // Esconde o produto se não corresponder
+        }
+    });
+}
+
+// Adiciona um evento para realizar a busca quando o usuário digitar
+campoBusca.addEventListener('input', buscarProdutos);
+
+    </script>
+</body>
+</html>

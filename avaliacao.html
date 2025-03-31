@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <title>Mercado Primavera</title>
+</head>
+<body>
+  <header id="cabecalho">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Mercado Primavera</a>
+        <button id="botao" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link active" href="index.html">Início</a></li>
+            <li class="nav-item"><a class="nav-link" href="entrar.html">Entrar</a></li>
+            <li class="nav-item"><a class="nav-link" href="perfil.html">Minha Conta</a></li>
+            <li class="nav-item"><a class="nav-link" href="carrinho.html">Carrinho</a></li>
+            <li class="nav-item"><a class="nav-link" href="avaliacao.html">Avaliação</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</header>
+
+  <main id="avaliacao">
+    <section id="feedback" class="container p-3 bg-light rounded shadow-sm">
+      <h2 class="text-center mb-4">Deixe sua Opinião</h2>
+      <form id="formAvaliacao">
+        <div class="row mb-2">
+          <div class="col-md-6">
+            <input type="text" class="form-control form-control-sm" placeholder="Nome" name="nome" required>
+          </div>
+          <div class="col-md-6">
+            <input type="email" class="form-control form-control-sm" placeholder="Email" name="email" required>
+          </div>
+        </div>
+        <select class="form-select form-select-sm mb-2" name="avaliacao" required>
+          <option selected disabled>O que você quer avaliar?</option>
+          <option value="atendimento">Atendimento</option>
+          <option value="entrega">Entrega</option>
+          <option value="qualidade">Qualidade</option>
+          <option value="site">Site</option>
+        </select>
+        <textarea class="form-control form-control-sm mb-2" placeholder="Comentário" name="comentario" style="height: 70px" required></textarea>
+        <div class="d-flex justify-content-start mb-2">
+          <i class="bi bi-star estrela" data-value="1"></i>
+          <i class="bi bi-star estrela" data-value="2"></i>
+          <i class="bi bi-star estrela" data-value="3"></i>
+          <i class="bi bi-star estrela" data-value="4"></i>
+          <i class="bi bi-star estrela" data-value="5"></i>
+        </div>
+        <input type="hidden" name="nota" id="nota" value="0">
+        <p class="mb-2">Nota: <span id="notaDisplay">0</span>/5</p>
+        <button type="submit" class="btn btn-success btn-sm w-100">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer id="rodape" >
+    <section class="footer-container">
+        <div class="footer-section">
+            <h3>Atendimento</h3>
+            <p>Central de Atendimento</p>
+            <h4>Contatos:</h4>
+            <p>(99) 9999-9999</p>
+            <p>mercadoprimavera@email.com</p>
+            <h4>Horário de atendimento:</h4>
+            <p>De segunda a domingo, das 08h às 21h</p>
+        </div>
+        <div class="footer-section">
+            <h4>Formas de Pagamento</h4>
+            <img src="imagens/pagamento.png" alt="formas de pagamento">
+        </div>
+    </section>
+    <div>
+        <p>&copy; 2025 Mercado Primavera - Todos os direitos reservados.</p>
+    </div>
+</footer>
+<!-- Acessibilidade VLibras -->
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+  </div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+new window.VLibras.Widget();
+</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const estrelas = document.querySelectorAll(".estrela");
+      const notaInput = document.getElementById("nota");
+      const notaDisplay = document.getElementById("notaDisplay");
+
+      estrelas.forEach((estrela, index) => {
+        estrela.addEventListener("click", () => {
+          const notaSelecionada = index + 1;
+          notaInput.value = notaSelecionada;
+          notaDisplay.textContent = notaSelecionada;
+
+          estrelas.forEach((e, i) => {
+            e.classList.toggle("bi-star-fill", i < notaSelecionada);
+            e.classList.toggle("bi-star", i >= notaSelecionada);
+          });
+        });
+      });
+    });
+    document.getElementById("formAvaliacao").addEventListener("submit", function(event) {
+    event.preventDefault(); // Impede o envio real do formulário
+    alert("Muito obrigado pela sua avaliação!");
+    window.location.href = "index.html"; // Redireciona para a página inicial
+  });
+  </script>
+</body>
+</html>

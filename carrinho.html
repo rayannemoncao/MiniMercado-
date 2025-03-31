@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Mercado Primavera</title>
+</head>
+<body>
+    <header id="cabecalho">
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Mercado Primavera</a>
+            <button id="botao" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" href="index.html">Início</a></li>
+                <li class="nav-item"><a class="nav-link" href="entrar.html">Entrar</a></li>
+                <li class="nav-item"><a class="nav-link" href="perfil.html">Minha Conta</a></li>
+                <li class="nav-item"><a class="nav-link" href="carrinho.html">Carrinho</a></li>
+                <li class="nav-item"><a class="nav-link" href="avaliacao.html">Avaliação</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+    </header>
+
+    <main class="container mt-4">
+        <h2>Seu Carrinho</h2>
+        <div id="produtosCarrinho"></div>
+        <div class="mt-3">
+            <h3>Total: <span id="totalValor">R$ 0,00</span></h3>
+            <h3>Taxa de Entrega: <span id="taxaEntrega">R$ 0,00</span></h3>
+            <button class="btn btn-danger" onclick="limparCarrinho()">Limpar Carrinho</button>
+        </div>
+
+        <h3 class="mt-5">Forma de Recebimento</h3>
+        <input type="radio" name="recebimento" value="retirada" checked> Retirada
+        <input type="radio" name="recebimento" value="entrega"> Entrega
+
+        <div id="cep" class="mt-3" style="display: none;">
+            <label>Informe seu CEP:</label>
+            <input type="text" id="cepInput" class="form-control" placeholder="12345-678">
+        </div>
+
+        <div id="dataHora" class="mt-3">
+            <label>Data:</label>
+            <input type="date" id="dataRecebimento" class="form-control">
+            <label>Horário:</label>
+            <input type="time" id="horaRecebimento" class="form-control">
+        </div>
+
+        <h3 class="mt-4">Forma de Pagamento</h3>
+        <input type="radio" name="pagamento" value="cartao"> Cartão
+        <input type="radio" name="pagamento" value="pix" checked> PIX
+
+        <div id="dadosCartao" class="mt-3" style="display: none;">
+            <label>Número do Cartão:</label>
+            <input type="text" id="numCartao" class="form-control" placeholder="**** **** **** ****">
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <label>Data de Vencimento:</label>
+                    <input type="month" id="vencimentoCartao" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>CVV:</label>
+                    <input type="text" id="cvvCartao" class="form-control" placeholder="***">
+                </div>
+            </div>
+            <div class="mt-2">
+                <input type="checkbox" id="pagamentoAvista"> Pagamento à vista
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <button class="btn btn-primary" onclick="finalizarPedido()">Finalizar Pedido</button>
+        </div>
+    </main>
+
+    <footer id="rodape" >
+        <section class="footer-container">
+            <div class="footer-section">
+                <h3>Atendimento</h3>
+                <p>Central de Atendimento</p>
+                <h4>Contatos:</h4>
+                <p>(99) 9999-9999</p>
+                <p>mercadoprimavera@email.com</p>
+                <h4>Horário de atendimento:</h4>
+                <p>De segunda a domingo, das 08h às 21h</p>
+            </div>
+            <div class="footer-section">
+                <h4>Formas de Pagamento</h4>
+                <img src="imagens/pagamento.png" alt="formas de pagamento">
+            </div>
+        </section>
+        <div>
+            <p>&copy; 2025 Mercado Primavera - Todos os direitos reservados.</p>
+        </div>
+    </footer>
+      <!-- acessibilidade -->
+      <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+      </div>
+    
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+    <script>
+        function carregarCarrinho() {
+            const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+            const produtosCarrinho = document.getElementById('produtosCarrinho');
+            produtosCarrinho.innerHTML = '';
+            
+            let total = 0;
+
+            carrinho.forEach((produto, index) => {
+                const produtoDiv = document.createElement('div');
+                produtoDiv.classList.add('produto', 'border', 'p-3', 'mb-2');
+                produtoDiv.innerHTML = `
+                    <div class="row">
+                        <div class="col-8">
+                            <h5>${produto.nome}</h5>
+                            <p>Preço: ${produto.preco}</p>
+                            <label for="quantidade-${index}">Quantidade:</label>
+                            <input type="number" id="quantidade-${index}" value="${produto.quantidade}" min="1" class="form-control" onchange="atualizarQuantidade(${index})">
+                        </div>
+                        <div class="col-4 text-end">
+                            <button class="btn btn-danger" onclick="removerProduto(${index})">Remover</button>
+                        </div>
+                    </div>
+                `;
+                produtosCarrinho.appendChild(produtoDiv);
+
+                total += parseFloat(produto.preco.replace('R$', '').replace(',', '.')) * produto.quantidade;
+            });
+
+            let taxaEntrega = 0;
+            if (document.querySelector('input[name="recebimento"]:checked')?.value === 'entrega' && total < 100) {
+                taxaEntrega = 25.00;
+            }
+
+            const totalComTaxa = total + taxaEntrega;
+            document.getElementById('totalValor').innerText = totalComTaxa.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+            document.getElementById('taxaEntrega').innerText = taxaEntrega.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+        }
+
+        function atualizarQuantidade(index) {
+            const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+            const quantidade = document.getElementById(`quantidade-${index}`).value;
+            carrinho[index].quantidade = parseInt(quantidade);
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+            carregarCarrinho();
+        }
+
+        function removerProduto(index) {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+            carrinho.splice(index, 1);
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+            carregarCarrinho();
+        }
+
+        function limparCarrinho() {
+            localStorage.removeItem('carrinho');
+            carregarCarrinho();
+        }
+
+        function verificarRecebimento() {
+            const opcaoEntrega = document.querySelector('input[name="recebimento"]:checked')?.value;
+            document.getElementById('cep').style.display = opcaoEntrega === "entrega" ? "block" : "none";
+            carregarCarrinho(); // Recalcula o total ao mudar a forma de recebimento
+        }
+
+        function verificarPagamento() {
+            const opcaoPagamento = document.querySelector('input[name="pagamento"]:checked')?.value;
+            document.getElementById('dadosCartao').style.display = opcaoPagamento === "cartao" ? "block" : "none";
+        }
+
+        function finalizarPedido() {
+            const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+            let total = 0;
+            
+            carrinho.forEach(produto => {
+                total += parseFloat(produto.preco.replace('R$', '').replace(',', '.')) * produto.quantidade;
+            });
+
+            let taxaEntrega = 0;
+            if (document.querySelector('input[name="recebimento"]:checked')?.value === 'entrega' && total < 100) {
+                taxaEntrega = 25.00;
+            }
+
+            const totalComTaxa = total + taxaEntrega;
+            const numeroPedido = Math.floor(Math.random() * 1000000);
+            
+            const pedido = {
+                numero: numeroPedido,
+                valor: totalComTaxa.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }),
+                data: new Date().toLocaleString(),
+                itens: carrinho
+            };
+
+            let pedidosRealizados = JSON.parse(localStorage.getItem('pedidosRealizados')) || [];
+            pedidosRealizados.push(pedido);
+            localStorage.setItem('pedidosRealizados', JSON.stringify(pedidosRealizados));
+            
+            localStorage.removeItem('carrinho');
+            alert(`Pedido ${numeroPedido} realizado com sucesso!`);
+            window.location.href = "perfil.html";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('input[name="recebimento"]').forEach(input => {
+                input.addEventListener("change", verificarRecebimento);
+            });
+
+            document.querySelectorAll('input[name="pagamento"]').forEach(input => {
+                input.addEventListener("change", verificarPagamento);
+            });
+            
+            carregarCarrinho();
+        });
+    </script>
+</body>
+</html>
